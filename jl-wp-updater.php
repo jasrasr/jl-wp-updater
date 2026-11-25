@@ -2,7 +2,7 @@
 /**
  * Plugin Name: JL WP Updater
  * Description: Manage GitHub release updates for selected WordPress plugins and themes.
- * Version: 1.1.0
+ * Version: 1.1.1
  * Requires at least: 6.3
  * Requires PHP: 7.4
  * Update URI: https://github.com/jasrasr/jl-wp-updater
@@ -13,9 +13,11 @@
 defined( 'ABSPATH' ) || exit;
 
 final class JL_WP_Updater {
-	private const OPTION = 'jl_wp_updater_managed';
+	private const OPTION = 'jl_wp_updater_managed_v2';
+	private const LEGACY_OPTION = 'jl_wp_updater_managed';
 	private const SELF = 'plugin:jl-wp-updater/jl-wp-updater.php';
 	private const PACK = 'plugin:jl-wp-plugins-pack/jl-wp-plugins-pack.php';
+	private const THEME = 'theme:jl-wp-theme-dark';
 	private const NONCE = 'jl_wp_updater';
 
 	public static function boot(): void {
@@ -27,7 +29,12 @@ final class JL_WP_Updater {
 	}
 
 	private static function managed(): array {
-		return array_unique( array_merge( [ self::SELF ], (array) get_site_option( self::OPTION, [ self::PACK ] ) ) );
+		$selected = get_site_option( self::OPTION, false );
+		if ( false === $selected ) {
+			$previous = (array) get_site_option( self::LEGACY_OPTION, [] );
+			$selected = array_merge( $previous, [ self::PACK, self::THEME ] );
+		}
+		return array_unique( array_merge( [ self::SELF ], (array) $selected ) );
 	}
 
 	private static function item( string $type, string $file, array $headers ): ?array {

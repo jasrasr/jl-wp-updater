@@ -6,7 +6,7 @@ Manage updates for selected plugins and themes from public GitHub releases throu
 2. Open **Tools → JL WP Updater**. On multisite, use **Network Admin → Settings → JL WP Updater**.
 3. Select the installed plugins and themes you want to manage, then click **Save managed updates** and **Check now**.
 
-An item appears when its main plugin file or theme stylesheet declares an HTTPS GitHub repository in its `Update URI` header. The updater stays selected so it can receive its own updates. JL WP Plugins Pack starts selected when installed and can be deselected. Use a single update provider for each managed item.
+An item appears when its main plugin file or theme stylesheet declares an HTTPS GitHub repository in its `Update URI` header. The updater stays selected so it can receive its own updates. JL WP Plugins Pack and JL WP Theme Dark start selected when installed, including after upgrading from 1.1.0. You can deselect either on the settings page. Existing selections for other items carry forward. Use a single update provider for each managed item.
 
 New versions appear in the normal WordPress plugin or theme update screen. Enable automatic updates there if desired. **Reinstall current version** appears when the installed version matches the published release.
 
