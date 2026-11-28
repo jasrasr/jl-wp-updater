@@ -10,6 +10,10 @@ An item appears when its main plugin file or theme stylesheet declares an HTTPS 
 
 New versions appear in the normal WordPress plugin or theme update screen. Enable automatic updates there if desired. **Reinstall current version** appears when the installed version matches the published release.
 
+## Update artwork
+
+The root `assets/` folder contains `icon-128x128.png` and `icon-256x256.png` for Git Updater update notices and the View details window. The icons use the site's blue and red JL logo as their color and shape reference.
+
 ## Package format
 
 Publish a stable release tagged with the version in the main plugin or theme file, such as `v1.1.0`. Attach a ZIP named after the **installed directory**. The ZIP must contain one top-level directory with that same name and the main PHP file or theme stylesheet inside. The version in that file must match the release.
